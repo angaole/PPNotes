@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Search</title>
+    {% load  static %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="{%static "css/bootstrap.min.css"%}" rel="stylesheet">
+    <link href="{%static "css/style.css"%}" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="{%static "js/jquery.min.js"%}"></script>
+    <script type="text/javascript" src="{%static "/js/bootstrap.min.js"%}"></script>
+    <link href="{%static "/css/font-awesome.min.css"%}" rel="stylesheet" type="text/css">
+    <link href="{%static "css/bootstrap.css"%}" rel="stylesheet" type="text/css">
+</head>
+<body bgcolor="#d0d0d0">
+    <div class="section">
+       <div class="container">
+         <div class="row">
+           <div class="col-md-12">
+             <ul class="nav nav-justified nav-pills">
+               <li >
+                 <a href="/home/">Home</a>
+               </li>
+               <li>
+                 <a href="/browse/1/20/">Browse</a>
+               </li>
+               <li class="active">
+                 <a href="/search/">Search</a>
+               </li>
+               <li>
+                 <a href="/download/">Download</a>
+               </li>
+               <li>
+                 <a href="/help/">Help</a>
+               </li>
+             </ul>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="text-center">Search
+              <br>
+            </h1>
+          </div>
+        </div>    </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <select style="font-size:20px;", id="mysel">
+                            <option value="1">lncrna</option>
+                            <option value="2">SNP</option>
+                            <option value="3">disease</option>
+                        </select>
+                        </div>
+                        <script type="text/javascript">
+                        function setaction(){
+                            var myselect = document.getElementById('mysel');
+                            var index = myselect.selectedIndex;
+                            var val = myselect.options[index].value;
+                            var conten = form1.content.value;
+                            if(conten=="")
+                            {
+                                alert("Please input what you want to search")
+                            }
+                            else
+                             {if(val=="1"){
+                                 //document.getElementByName("fuck").value="1";
+                                 var tem = "/searchby/1/"+String(conten)+"/";
+                                 //alert(tem);
+                                 document.form1.action=tem;
+                             }
+                             if(val=="2"){
+                                 //document.getElementByName("fuck").value="2";
+                                 var tem = "/searchby/2/"+String(conten)+"/";
+                                 document.form1.action=tem;
+                             }
+                             if(val=="3"){
+                                 //document.getElementByName("fuck").value="3";
+                                 var tem = "/searchby/3/"+String(conten)+"/";
+                                 document.form1.action=tem;
+                             }
+                            form1.submit();}
+                        }
+                        </script>
+                  <div class=" col-md-6">
+                    <form role="form" action="" method="post" name="form1">
+                      <div class="form-group">
+                        <div class="input-group">
+                          <!-- <input type="hidden" class="form-control" name="fuck"> -->
+                          <input type="text" class="form-control" name="content">
+                          <span class="input-group-btn">
+                            <button class="btn btn-success" type="submit" onclick="setaction()">Search</a>
+                          </span>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>You can only search the name of a disease or a long non-coding RNA.
+                          <br>Please check your input.
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+          <div class="col-md-6">
+            <p><font size=4>
+                Please input the name of a long non-conding RNA or a disease.</font>
+                <br> <font size=4>Such as "ENST00000417324.1" or "Neuroblastoma".</font>
+            </p>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+      </div>
+    </div>
+</body>
+</html>

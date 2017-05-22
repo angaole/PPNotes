@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Search</title>
+    {% load  static %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{%static "css/bootstrap.min.css"%}" rel="stylesheet">
+    <link href="{%static "css/style.css"%}" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="{%static "js/jquery.min.js"%}"></script>
+    <script type="text/javascript" src="{%static "/js/bootstrap.min.js"%}"></script>
+    <link href="{%static "/css/font-awesome.min.css"%}" rel="stylesheet" type="text/css">
+    <link href="{%static "css/bootstrap.css"%}" rel="stylesheet" type="text/css">
+</head>
+<body bgcolor="#d0d0d0">
+    {% for ll in list0 %}
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="nav nav-justified nav-pills">
+                        <li >
+                            <a href="/home/">Home</a>
+                        </li>
+                        <li>
+                            <a href="/browse/1/20/">Browse</a>
+                        </li>
+                        <li class="active">
+                            <a href="/search/">Search</a>
+                        </li>
+                        <li>
+                            <a href="/download/">Download</a>
+                        </li>
+                        <li>
+                            <a href="/help/">Help</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="text-center">{{ ll.ids }}
+                        <br>
+                    </h1>
+                </div>
+            </div>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <table class="table  table-bordered" style="table-layout:fixed;word-wrap:break-word;">
+                            <tbody>
+                                <tr>
+                                    <td>Lncrna ID</td>
+                                    <td>{{ ll.ids }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Location</td>
+                                    <td>{{ ll.locas }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-6"></div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-bordered" style="table-layout:fixed;word-wrap:break-word;">
+                            <thead>
+                                <tr>
+                                    <td>Sequence</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="word-wrap:break-word; overflow:hidden; width: 600px;">{{ ll.seq }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Disease</th>
+                                    <th>Score</th>
+                                </tr>
+                            </thead>
+                            {% for line in lists %}
+                            <tbody>
+                                <tr>
+                                    <td>{{ line.dise}}</td>
+                                    <td>{{ line.dis_sco }}</td>
+                                </tr>
+                            </tbody>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Gene</th>
+                                    <th>Score</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for lin in list_gen %}
+                                <tr>
+                                    <td>{{ lin.gene}}</td>
+                                    <td>{{ lin.gen_sco }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <canvas id="a_canvas" width="500" height="400"></canvas>
+                        <script>
+                            (function (){
+
+                                window.addEventListener("load", function(){
+
+                                // var data = [1.1,2.1,3.1,2.8,1.8,1.3,2.3,3.3,2.6,];
+                                // var xinforma = ['so','me','th','in','gi','do','nt','kn', 'ow'];
+
+                                var data = {{list_expre}};
+                                var xinforma = ['heart', 'lung', 'stomach', 'arms', 'legs']
+
+                                  var a_canvas = document.getElementById('a_canvas');
+                                  var context = a_canvas.getContext("2d");
+
+                                  var gradient = context.createLinearGradient(0,0,0,300);
+
+                                  context.fillStyle = gradient;
+
+                                  context.fillRect(0,0,a_canvas.width,a_canvas.height);
+
+                                  var realheight = a_canvas.height-15;
+                                  var realwidth = a_canvas.width-40;
+                                  // 描绘边框
+                                  var grid_cols = data.length + 1;
+                                  var grid_rows = 4;
+                                  var cell_height = realheight / grid_rows;
+                                  var cell_width = realwidth / grid_cols;
+                                  context.lineWidth = 1;
+                                  context.strokeStyle = "#a0a0a0";
+
+                                  // 结束边框描绘
+                                  context.beginPath();
+
+                                context.moveTo(0,realheight);
+                                context.lineTo(realwidth,realheight);
+
+
+                                    //画竖线
+                                context.moveTo(0,20);
+                                context.lineTo(0,realheight);
+                                context.lineWidth = 1;
+                                context.strokeStyle = "black";
+                                context.stroke();
+
+
+                                var max_v =0;
+
+                                for(var i = 0; i<data.length; i++){
+                                    if (data[i] > max_v) { max_v =data[i]};
+                                }
+                                max_v = max_v * 1.1;
+                                var points = [];
+                                for( var i=0; i < data.length; i++){
+                                    var v= data[i];
+                                    var px = cell_width *　(i +1);
+                                    var py = realheight - realheight*(v / max_v);
+                                    //alert(py);
+                                    points.push({"x":px,"y":py});
+                                }
+
+                                for(var i in points){
+                                    var p = points[i];
+                                    context.beginPath();
+                                    context.fillStyle="green";
+                                    context.fillRect(p.x,p.y,15,realheight-p.y);
+
+                                    context.fill();
+                                }
+                                  //添加文字
+                                for(var i in points)
+                                {
+                                    var p = points[i];
+                                    context.beginPath();
+                                    context.fillStyle="black";
+                                    context.fillText(data[i], p.x + 1, p.y - 15);
+                                    context.fillText(xinforma[i],p.x + 1,realheight+12);
+                                    context.fillText('tissue',realwidth,realheight+12);
+                                    context.fillText('expression',0,10);
+                                }
+                                },false);
+                              })();
+
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endfor %}
+</body>
+</html>
