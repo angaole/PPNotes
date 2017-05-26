@@ -13,6 +13,7 @@
     <script type="text/javascript" src="{%static "/js/bootstrap.min.js"%}"></script>
     <link href="{%static "/css/font-awesome.min.css"%}" rel="stylesheet" type="text/css">
     <link href="{%static "css/bootstrap.css"%}" rel="stylesheet" type="text/css">
+    <script src="{%static "js/dist/echarts.js"%}"></script>
 </head>
 <body bgcolor="#d0d0d0">
     {% for ll in list0 %}
@@ -139,7 +140,7 @@
                 </div>
             </div>
         </div>
-        <div class="section">
+        <!-- <div class="section">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -231,7 +232,51 @@
                 </div>
             </div>
         </div>
+    </div> -->
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="main" style="width:1200px;height:800px">
+                    <script type="text/javascript">
+                    require.config({
+                        paths:{echarts: "{%static "js/dist/"%}"}
+                    });
+                    require(['echarts', 'echarts/chart/bar',],
+                        function(ec){
+                            var myChart = ec.init(document.getElementById('main'));
+                            var option = {
+                                xAxis : [ {
+                                    axisLabel: {rotate: 10},
+                                    type : 'category',
+                                    data : ['Acute Myeloid Leukemia', 'Clear Cell Sarcoma of the Kidney', 'Neuroblastoma', 'Osteosarcoma', 'Rhabdoid Tumor']
+                                }],
+                                grid: {
+                                    x:40, x2:100, y2:400
+                                },
+                                yAxis : [{
+                                    type : 'value'
+                                }],
+                                series : [{
+                                    name:"number",
+                                    type:"bar",
+                                    data:{{list_expre}},
+                                    itemStyle:{
+                                        normal:{
+                                            color:'#bbe2e8',
+                                        }
+                                    }
+                                }]
+                            };
+                            myChart.setOption(option);
+                        });
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
 
 
 {% endfor %}

@@ -64,7 +64,295 @@
              </div>
            </div>
          </div>
-    <div class="section">
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="pie" style="width:1200px;height:800px">
+                        <script type="text/javascript">
+                        require.config({
+                            paths:{echarts: "{%static "js/dist/"%}"}
+                        });
+                        require(['echarts', 'echarts/chart/pie', ],
+                            function(ec){
+                                var myChart = ec.init(document.getElementById('pie'));
+                                option = {
+                                    title : {
+                                        text : 'Disease',
+                                        x : 'center'
+                                    },
+                                    tooltip : {
+                                        trigger: 'item',
+                                        formatter: "{a} <br/>{b} : {c} ({d}%)"
+                                    },
+                                    calculable : false,
+                                    series : [
+                                        {
+                                            type:'pie',
+                                            selectedMode: 'single',
+                                            radius : [0, 120],
+                                            x: '20%',
+                                            width: '40%',
+                                            funnelAlign: 'right',
+                                            max: 1548,
+                                            data:[
+                                                {value:544, name:'Adrenal Gland'},
+                                                {value:324, name:'Nervous System'},
+                                                {value:1478, name:'Kidney'},
+                                                {value:135 , name:'Bone'},
+                                                {value:335, name:'Blood'},
+                                                {value:234, name:'Bladder'},
+                                                {value:135, name:'Breast'},
+                                                {value:154, name:'Cervix'},
+                                                {value:335, name:'Bile Duct'},
+                                                {value:464, name:'Colorectal'},
+                                                {value:135, name:'Eye'},
+                                                {value:135, name:'Esophagus'},
+                                                {value:489, name:'Brain'},
+                                                {value:335, name:'Head and Neck'},
+                                                {value:154, name:'Bone Marrow'},
+                                                {value:310, name:'Liver'},
+                                                {value:369, name:'Lung'},
+                                                {value:154, name:'Pleura'},
+                                                {value:335, name:'Ovary'},
+                                                {value:310, name:'Pancreas'},
+                                                {value:135, name:'Prostate'},
+                                                {value:335, name:'Soft Tissue'},
+                                                {value:310, name:'Skin'},
+                                                {value:234, name:'Stomach'},
+                                                {value:135, name:'Testis'},
+                                                {value:154, name:'Thyroid'},
+                                                {value:335, name:'Thymus'},
+                                                {value:544, name:'Uterus'},
+                                                {value:234, name:'Lymph Nodes'}
+                                            ]
+                                        },
+                                        {
+                                            type:'pie',
+                                            radius : [240, 260],
+
+                                            roseType:'area',
+                                            x: '50%',
+                                            max: 40,
+                                            sort : 'ascending',
+                                            // width: '35%',
+                                            // funnelAlign: 'left',
+                                            // max: 1048,
+                                            itemStyle : {
+                                                normal : {
+                                                    label : {
+                                                        show : false
+                                                    },
+                                                    labelLine : {
+                                                        show : false
+                                                    }
+                                                }
+                                            },
+                                            data:[
+                                                {value:310, name:'Adrenocortical Carcinoma'},
+                                                {value:234, name:'Pheochromocytoma and Paraganglioma'},
+
+                                                {value:234, name:'Neuroblastoma'},
+
+                                                {value:310, name:'Clear Cell Sarcoma of the Kidney'},
+                                                {value:154, name:'Rhabdoid Tumor'},
+                                                {value:335, name:'High-Risk Wilms Tumor'},
+                                                {value:310, name:'Kidney Chromophobe'},
+                                                {value:234, name:'Kidney Renal Clear Cell Carcinoma'},
+                                                {value:135, name:'Kidney Renal Papillary Cell Carcinoma'},
+
+                                                {value:135, name:'Osteosarcoma'},
+
+                                                {value:335, name:'Acute Myeloid Leukemia'},
+
+                                                {value:234, name:'Bladder Urothelial Carcinoma'},
+
+                                                {value:135, name:'Breast Invasive Carcinoma'},
+
+                                                {value:154, name:'Cervical Squamous Cell Carcinoma and Endocervical Adenocarcinoma'},
+
+                                                {value:335, name:'Cholangiocarcinoma'},
+
+                                                {value:310, name:'Colon Adenocarcinoma'},
+                                                {value:154, name:'Rectum Adenocarcinoma'},
+
+                                                {value:135, name:'Uveal Melanoma'},
+
+                                                {value:135, name:'Esophageal Carcinoma'},
+
+                                                {value:154, name:'Glioblastoma Multiforme'},
+                                                {value:335, name:'Brain Lower Grade Glioma'},
+
+                                                {value:335, name:'Head and Neck Squamous Cell Carcinoma'},
+
+                                                {value:154, name:'Acute Myeloid Leukemia'},
+
+                                                {value:310, name:'Liver Hepatocellular Carcinoma'},
+
+                                                {value:234, name:'Lung Adenocarcinoma'},
+                                                {value:135, name:'Lung Squamous Cell Carcinoma'},
+
+                                                {value:154, name:'Mesothelioma'},
+
+                                                {value:335, name:'Ovarian Serous Cystadenocarcinoma'},
+
+                                                {value:310, name:'Pancreatic Adenocarcinoma'},
+
+                                                {value:135, name:'Prostate Adenocarcinoma'},
+
+
+                                                {value:335, name:'Sarcoma'},
+
+                                                {value:310, name:'Skin Cutaneous Melanoma'},
+
+                                                {value:234, name:'Stomach Adenocarcinoma'},
+
+                                                {value:135, name:'Testicular Germ Cell Tumors'},
+
+                                                {value:154, name:'Thyroid Carcinoma'},
+
+                                                {value:335, name:'Thymoma'},
+
+                                                {value:310, name:'Uterine Corpus Endometrial Carcinoma'},
+                                                {value:234, name:'Uterine Carcinosarcoma'},
+
+                                                {value:234, name:'Lymphoid Neoplasm Diffuse Large B-cell Lymphoma'}
+                                            ]
+                                        }
+                                    ]
+                                };
+                                myChart.setOption(option);
+                                var ecConfig = require('echarts/config');
+                                function eConsole(param){
+                                    var name = param.name;
+                                    if(name=='Acute Myeloid Leukemia'){
+                                        top.location.href="/searchfor/Acute Myeloid Leukemia"
+                                    }
+                                    if(name=='Clear Cell Sarcoma of the Kidney') {
+                                        top.location.href="/searchfor/Clear Cell Sarcoma of the Kidney"
+                                    }
+                                    if(name=='Neuroblastoma') {
+                                        top.location.href="/searchfor/Neuroblastoma"
+                                    }
+                                    if(name=='Osteosarcoma') {
+                                        top.location.href="/searchfor/Osteosarcoma"
+                                    }
+                                    if(name=='Rhabdoid Tumor') {
+                                        top.location.href="/searchfor/Rhabdoid Tumor"
+                                    }
+                                    if(name=='High-Risk Wilms Tumor') {
+                                        top.location.href="/searchfor/High-Risk Wilms Tumor"
+                                    }
+                                    if(name=='Adrenocortical Carcinoma') {
+                                        top.location.href="/searchfor/Adrenocortical Carcinoma"
+                                    }
+                                    if(name=='Bladder Urothelial Carcinoma') {
+                                        top.location.href="/searchfor/Bladder Urothelial Carcinoma"
+                                    }
+                                    if(name=='Breast Invasive Carcinoma') {
+                                        top.location.href="/searchfor/Breast Invasive Carcinoma"
+                                    }
+                                    if(name=='Cervical Squamous Cell Carcinoma and Endocervical Adenocarcinoma') {
+                                        top.location.href="/searchfor/Cervical Squamous Cell Carcinoma and Endocervical Adenocarcinoma"
+                                    }
+                                    if(name=='Cholangiocarcinoma') {
+                                        top.location.href="/searchfor/Cholangiocarcinoma"
+                                    }
+                                    if(name=='Colon Adenocarcinoma') {
+                                        top.location.href="/searchfor/Colon Adenocarcinoma"
+                                    }
+                                    if(name=='Lymphoid Neoplasm Diffuse Large B-cell Lymphoma'){
+                                        top.location.href="/searchfor/Lymphoid Neoplasm Diffuse Large B-cell Lymphoma"
+                                    }
+                                    if (name=='Esophageal Carcinoma'){
+                                        top.location.href="searchfor/Esophageal Carcinoma"
+                                    }
+                                    if(name=='Glioblastoma Multiforme') {
+                                        top.location.href="/searchfor/Glioblastoma Multiforme"
+                                    }
+                                    if(name=='Head and Neck Squamous Cell Carcinoma') {
+                                        top.location.href="/searchfor/Head and Neck Squamous Cell Carcinoma"
+                                    }
+                                    if(name=='Kidney Chromophobe') {
+                                        top.location.href="/searchfor/Kidney Chromophobe"
+                                    }
+                                    if(name=='Kidney Renal Clear Cell Carcinoma') {
+                                        top.location.href="/searchfor/Kidney Renal Clear Cell Carcinoma"
+                                    }
+                                    if(name=='Kidney Renal Papillary Cell Carcinoma') {
+                                        top.location.href="/searchfor/Kidney Renal Papillary Cell Carcinoma"
+                                    }
+                                    if(name=='Acute Myeloid Leukemia') {
+                                        top.location.href="/searchfor/Acute Myeloid Leukemia"
+                                    }
+                                    if(name=='Brain Lower Grade Glioma') {
+                                        top.location.href="/searchfor/Brain Lower Grade Glioma"
+                                    }
+                                    if(name=='Liver Hepatocellular Carcinoma') {
+                                        top.location.href="/searchfor/Liver Hepatocellular Carcinoma"
+                                    }
+                                    if(name=='Lung Adenocarcinoma') {
+                                        top.location.href="/searchfor/Lung Adenocarcinoma"
+                                    }
+                                    if(name=='Lung Squamous Cell Carcinoma') {
+                                        top.location.href="/searchfor/Lung Squamous Cell Carcinoma"
+                                    }
+                                    if(name=='Mesothelioma') {
+                                        top.location.href="/searchfor/Mesothelioma"
+                                    }
+                                    if(name=='Ovarian Serous Cystadenocarcinoma') {
+                                        top.location.href="/searchfor/Ovarian Serous Cystadenocarcinoma"
+                                    }
+                                    if(name=='Pancreatic Adenocarcinoma') {
+                                        top.location.href="/searchfor/Pancreatic Adenocarcinoma"
+                                    }
+                                    if(name=='Pheochromocytoma and Paraganglioma') {
+                                        top.location.href="/searchfor/Pheochromocytoma and Paraganglioma"
+                                    }
+                                    if(name=='Prostate Adenocarcinoma') {
+                                        top.location.href="/searchfor/Prostate Adenocarcinoma"
+                                    }
+                                    if(name=='Rectum Adenocarcinoma') {
+                                        top.location.href="/searchfor/Rectum Adenocarcinoma"
+                                    }
+                                    if(name=='Sarcoma') {
+                                        top.location.href="/searchfor/Sarcoma"
+                                    }
+                                    if(name=='Skin Cutaneous Melanoma') {
+                                        top.location.href="/searchfor/Skin Cutaneous Melanoma"
+                                    }if(name=='Stomach Adenocarcinoma') {
+                                        top.location.href="/searchfor/Stomach Adenocarcinoma"
+                                    }
+                                    if(name=='Testicular Germ Cell Tumors') {
+                                        top.location.href="/searchfor/Testicular Germ Cell Tumors"
+                                    }
+                                    if(name=='Thyroid Carcinoma') {
+                                        top.location.href="/searchfor/Thyroid Carcinoma"
+                                    }
+                                    if(name=='Thymoma') {
+                                        top.location.href="/searchfor/Thymoma"
+                                    }
+                                    if(name=='Uterine Corpus Endometrial Carcinoma') {
+                                        top.location.href="/searchfor/Uterine Corpus Endometrial Carcinoma"
+                                    }
+                                    if(name=='Uterine Carcinosarcoma') {
+                                        top.location.href="/searchfor/Uterine Carcinosarcoma"
+                                    }
+                                    if(name=='Uveal Melanoma') {
+                                        top.location.href="/searchfor/Uveal Melanoma"
+                                    }
+
+                                }
+                                myChart.on(ecConfig.EVENT.CLICK, eConsole);
+                            }
+                        );
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="section">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -95,134 +383,136 @@
                                 }]
                             };
                             myChart.setOption(option);
-                            var ecConfig = require('echarts/config');
-                            function eConsole(param){
-                                var name = param.name;
-                                if(name=='Acute Myeloid Leukemia'){
-                                    top.location.href="/searchfor/Acute Myeloid Leukemia"
-                                }
-                                if(name=='Clear Cell Sarcoma of the Kidney') {
-                                    top.location.href="/searchfor/Clear Cell Sarcoma of the Kidney"
-                                }
-                                if(name=='Neuroblastoma') {
-                                    top.location.href="/searchfor/Neuroblastoma"
-                                }
-                                if(name=='Osteosarcoma') {
-                                    top.location.href="/searchfor/Osteosarcoma"
-                                }
-                                if(name=='Rhabdoid Tumor') {
-                                    top.location.href="/searchfor/Rhabdoid Tumor"
-                                }
-                                if(name=='High-Risk Wilms Tumor') {
-                                    top.location.href="/searchfor/High-Risk Wilms Tumor"
-                                }
-                                if(name=='Adrenocortical Carcinoma') {
-                                    top.location.href="/searchfor/Adrenocortical Carcinoma"
-                                }
-                                if(name=='Bladder Urothelial Carcinoma') {
-                                    top.location.href="/searchfor/Bladder Urothelial Carcinoma"
-                                }
-                                if(name=='Breast Invasive Carcinoma') {
-                                    top.location.href="/searchfor/Breast Invasive Carcinoma"
-                                }
-                                if(name=='Cervical Squamous Cell Carcinoma and Endocervical Adenocarcinoma') {
-                                    top.location.href="/searchfor/Cervical Squamous Cell Carcinoma and Endocervical Adenocarcinoma"
-                                }
-                                if(name=='Cholangiocarcinoma') {
-                                    top.location.href="/searchfor/Cholangiocarcinoma"
-                                }
-                                if(name=='Colon Adenocarcinoma') {
-                                    top.location.href="/searchfor/Colon Adenocarcinoma"
-                                }
-                                if(name=='Lymphoid Neoplasm Diffuse Large B-cell Lymphoma'){
-                                    top.location.href="/searchfor/Lymphoid Neoplasm Diffuse Large B-cell Lymphoma"
-                                }
-                                if (name=='Esophageal Carcinoma'){
-                                    top.location.href="searchfor/Esophageal Carcinoma"
-                                }
-                                if(name=='Glioblastoma Multiforme') {
-                                    top.location.href="/searchfor/Glioblastoma Multiforme"
-                                }
-                                if(name=='Head and Neck Squamous Cell Carcinoma') {
-                                    top.location.href="/searchfor/Head and Neck Squamous Cell Carcinoma"
-                                }
-                                if(name=='Kidney Chromophobe') {
-                                    top.location.href="/searchfor/Kidney Chromophobe"
-                                }
-                                if(name=='Kidney Renal Clear Cell Carcinoma') {
-                                    top.location.href="/searchfor/Kidney Renal Clear Cell Carcinoma"
-                                }
-                                if(name=='Kidney Renal Papillary Cell Carcinoma') {
-                                    top.location.href="/searchfor/Kidney Renal Papillary Cell Carcinoma"
-                                }
-                                if(name=='Acute Myeloid Leukemia') {
-                                    top.location.href="/searchfor/Acute Myeloid Leukemia"
-                                }
-                                if(name=='Brain Lower Grade Glioma') {
-                                    top.location.href="/searchfor/Brain Lower Grade Glioma"
-                                }
-                                if(name=='Liver Hepatocellular Carcinoma') {
-                                    top.location.href="/searchfor/Liver Hepatocellular Carcinoma"
-                                }
-                                if(name=='Lung Adenocarcinoma') {
-                                    top.location.href="/searchfor/Lung Adenocarcinoma"
-                                }
-                                if(name=='Lung Squamous Cell Carcinoma') {
-                                    top.location.href="/searchfor/Lung Squamous Cell Carcinoma"
-                                }
-                                if(name=='Mesothelioma') {
-                                    top.location.href="/searchfor/Mesothelioma"
-                                }
-                                if(name=='Ovarian Serous Cystadenocarcinoma') {
-                                    top.location.href="/searchfor/Ovarian Serous Cystadenocarcinoma"
-                                }
-                                if(name=='Pancreatic Adenocarcinoma') {
-                                    top.location.href="/searchfor/Pancreatic Adenocarcinoma"
-                                }
-                                if(name=='Pheochromocytoma and Paraganglioma') {
-                                    top.location.href="/searchfor/Pheochromocytoma and Paraganglioma"
-                                }
-                                if(name=='Prostate Adenocarcinoma') {
-                                    top.location.href="/searchfor/Prostate Adenocarcinoma"
-                                }
-                                if(name=='Rectum Adenocarcinoma') {
-                                    top.location.href="/searchfor/Rectum Adenocarcinoma"
-                                }
-                                if(name=='Sarcoma') {
-                                    top.location.href="/searchfor/Sarcoma"
-                                }
-                                if(name=='Skin Cutaneous Melanoma') {
-                                    top.location.href="/searchfor/Skin Cutaneous Melanoma"
-                                }if(name=='Stomach Adenocarcinoma') {
-                                    top.location.href="/searchfor/Stomach Adenocarcinoma"
-                                }
-                                if(name=='Testicular Germ Cell Tumors') {
-                                    top.location.href="/searchfor/Testicular Germ Cell Tumors"
-                                }
-                                if(name=='Thyroid Carcinoma') {
-                                    top.location.href="/searchfor/Thyroid Carcinoma"
-                                }
-                                if(name=='Thymoma') {
-                                    top.location.href="/searchfor/Thymoma"
-                                }
-                                if(name=='Uterine Corpus Endometrial Carcinoma') {
-                                    top.location.href="/searchfor/Uterine Corpus Endometrial Carcinoma"
-                                }
-                                if(name=='Uterine Carcinosarcoma') {
-                                    top.location.href="/searchfor/Uterine Carcinosarcoma"
-                                }
-                                if(name=='Uveal Melanoma') {
-                                    top.location.href="/searchfor/Uveal Melanoma"
-                                }
-
-                            }
-                            myChart.on(ecConfig.EVENT.CLICK, eConsole);
                         });
                     </script>
                 </div>
             </div>
             </div>
         </div>
-    </div>
+    </div> -->
+    <!-- <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <font>hello</font>
+                    <div id="test" style="width:1200px;height:800px">
+                    <script type="text/javascript">
+                    require.config({
+                        paths:{echarts: "{%static "js/dist/"%}"}
+                    });
+                    require(['echarts', 'echarts/chart/force','echarts/chart/chord',],
+                        DrawEchart);
+                        var chart;
+                        function DrawEchart(ec){
+                            chart = ec.init(document.getElementById('test'));
+                            chart.showLoading({
+                                text:"haha"
+                            });
+                            var option = {
+                                title :{
+                                    text:'test',
+                                    subtext:'testt',
+                                    x:'right',
+                                    y:'bottom'
+                                },
+                                tooltip : {
+                                    trigger: 'item',
+                                    formatter : "{b}"
+                                },
+                                toolbox: {
+                                    show : true,
+                                    feature : {
+                                        restore : {show: true},
+                                        magicType: {
+                                            show: true,
+                                            type: ['force', 'chord'],
+                                            option: {
+                                                chord: {
+                                                    minRadius : 2,
+                                                    maxRadius : 10,
+                                                    ribbonType: false,
+                                                    itemStyle: {
+                                                        normal: {
+                                                            label: {
+                                                                show: true,
+                                                                rotate: true
+                                                            },
+                                                            chordStyle: {
+                                                                opacity: 0.2
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                force: {
+                                                    minRadius : 5,
+                                                    maxRadius : 8,
+                                                    itemStyle : {
+                                                        normal : {
+                                                            label: {
+                                                                show: false
+                                                            },
+                                                            linkStyle : {
+                                                                opacity : 0.5
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        saveAsImage : {show: true}
+                                    }
+                                },
+                                legend : {
+                                    data : ['HTMLElement', 'WebGL', 'SVG', 'CSS', 'Other'],
+                                    orient : 'vertical',
+                                    x : 'left'
+                                },
+                                noDataEffect: 'none',
+                                series :[{
+                                    //FIXME No data
+                                    type: 'force',
+                                }],
+                            };
+                            chart.setOption(option);
+                            $.ajax({
+                                type:"GET",
+                                url: 'data.json',
+                                dataType: 'json',
+                                success: function (data) {
+                                    option.series[0] = {
+                                        type: 'force',
+                                        name: 'webkit-dep',
+                                        itemStyle: {
+                                            normal : {
+                                                linkStyle : {
+                                                    opacity : 0.5
+                                                }
+                                            }
+                                        },
+                                        categories: data.categories,
+                                        nodes: data.nodes,
+                                        links: data.links,
+                                        minRadius: 5,
+                                        maxRadius: 8,
+                                        gravity: 1.1,
+                                        scaling: 1.1,
+                                        steps: 20,
+                                        large: true,
+                                        useWorker: true,
+                                        coolDown: 0.995,
+                                        ribbonType: false
+                                    };
+                                    chart.setOption(option);
+                                    //chart.hideLoading();
+                                }
+                            });
+                            chart.setOption(option);
+                        }
+                    </script>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
 </body>
 </html>

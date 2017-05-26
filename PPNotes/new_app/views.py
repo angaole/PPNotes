@@ -10,6 +10,8 @@ from new_app.models import seqe
 from django.template import Context
 from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+import data_helper
+
 
 # Create your views here.
 def search(request):
@@ -72,6 +74,8 @@ def searchby(request, a, conten):
                 return render_to_response('result_single.html', c)
 
 def searchfor(request, dise):
+    ran = "Disease"
+    content = dise
     objects = messa.objects.filter(dise=dise)
     p = Paginator(objects, 20)
     page = request.GET.get('page')
