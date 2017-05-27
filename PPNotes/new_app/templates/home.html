@@ -131,13 +131,13 @@
                                             type:'pie',
                                             radius : [240, 260],
 
-                                            roseType:'area',
-                                            x: '50%',
-                                            max: 40,
-                                            sort : 'ascending',
-                                            // width: '35%',
-                                            // funnelAlign: 'left',
-                                            // max: 1048,
+                                            //roseType:'area',
+                                            //x: '50%',
+                                            //max: 40,
+                                            //sort : 'ascending',
+                                            width: '35%',
+                                            funnelAlign: 'left',
+                                            max: 1048,
                                             itemStyle : {
                                                 normal : {
                                                     label : {
@@ -344,6 +344,16 @@
 
                                 }
                                 myChart.on(ecConfig.EVENT.CLICK, eConsole);
+                                mychart.on('mouseover', function(params) {
+                                    option.series[0].data[params.dataIndex].label.normal={
+                                        show: true,
+                                        textStyle: {
+                                            fontSize: '35',
+                                            fontWeight: 'normal'
+                                        }
+                                    }
+                                    mychart.setOption(option);
+                                });
                             }
                         );
                         </script>
