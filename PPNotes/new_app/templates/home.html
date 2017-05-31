@@ -15,9 +15,12 @@
     <link href="{%static "/css/font-awesome.min.css"%}" rel="stylesheet" type="text/css">
     <link href="{%static "css/bootstrap.css"%}" rel="stylesheet" type="text/css">
     <script src="{%static "js/dist/echarts.js"%}"></script>
+    <script src="{%static "/js/mint.js"%}"></script>
 
 </head>
-<body bgcolor="#d0d0d0">
+<!-- bgcolor="#d0d0d0"style="background:#F2F2E6" -->
+<body>
+
     <div class="section">
        <div class="container">
          <div class="row">
@@ -47,7 +50,8 @@
        <div class="container">
          <div class="row">
            <div class="col-md-12">
-             <h1 class="text-center">Heading</h1>
+             <h1 class="text-left">Lnc2Catlas:</h1>
+             <h3 class="text-center"> An atlas of long noncoding RNAs associated with risk to cancer</h3>
            </div>
          </div>
        </div>
@@ -75,7 +79,7 @@
                         });
                         require(['echarts', 'echarts/chart/pie', ],
                             function(ec){
-                                var myChart = ec.init(document.getElementById('pie'));
+                                var myChart = ec.init(document.getElementById('pie'), 'mint');
                                 option = {
                                     title : {
                                         text : 'Disease',
@@ -359,6 +363,24 @@
                         </script>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="main" style="width:1200px;height:800px">
+                    <script type="text/javascript">
+                    require.config({
+                        paths : {echarts: "{%static "js/dist/"%}"}
+                    });
+                    require(['echarts', 'echarts/chart/force', ],
+                    
+                    )
+                    </script>
+                </div>
+            </div>
             </div>
         </div>
     </div>
