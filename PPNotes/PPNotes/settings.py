@@ -31,7 +31,6 @@ if DEBUG:
 
 ALLOWED_HOSTS = ['127.0.0.1',]
 
-
 # Application definition
 
 INSTALLED_APPS = [

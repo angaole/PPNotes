@@ -19,6 +19,7 @@ from new_app import views
 from django.conf import settings
 
 urlpatterns = [
+    url(r'^$', views.home),
     url(r'^admin/', admin.site.urls),
     url(r'^home/', views.home),
     url(r'^browse/(.+)/(.+)/$', views.browse),
