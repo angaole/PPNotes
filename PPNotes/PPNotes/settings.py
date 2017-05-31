@@ -29,7 +29,7 @@ if DEBUG:
     import mimetypes
     mimetypes.add_type("application/font-woff", ".woff", True)
 
-ALLOWED_HOSTS = ['192.168.2.166',]
+ALLOWED_HOSTS = ['127.0.0.1',]
 
 
 # Application definition
@@ -83,7 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mydata',
         'USER': 'root',
-        'PASSWORD': 'Workhard0407',
+        'PASSWORD': 'root',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
