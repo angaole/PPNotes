@@ -396,168 +396,6 @@
         </div>
       </div>
     </div>
-    <!-- <div class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div id="main" style="width:1200px;height:800px">
-                    <script type="text/javascript">
-                    require.config({
-                        paths:{echarts: "{%static "js/dist/"%}"}
-                    });
-                    require(['echarts', 'echarts/chart/bar',],
-                        function(ec){
-                            var myChart = ec.init(document.getElementById('main'));
-                            var option = {
-                                xAxis : [ {
-                                    axisLabel: {rotate: 70},
-                                    type : 'category',
-                                    data : ['Acute Myeloid Leukemia', 'Clear Cell Sarcoma of the Kidney', 'Neuroblastoma', 'Osteosarcoma', 'Rhabdoid Tumor', 'High-Risk Wilms Tumor', 'Adrenocortical Carcinoma', 'Bladder Urothelial Carcinoma', 'Breast Invasive Carcinoma', 'Cervical Squamous Cell Carcinoma and Endocervical Adenocarcinoma', 'Cholangiocarcinoma', 'Colon Adenocarcinoma', 'Lymphoid Neoplasm Diffuse Large B-cell Lymphoma', 'Esophageal Carcinoma', 'Glioblastoma Multiforme', 'Head and Neck Squamous Cell Carcinoma', 'Kidney Chromophobe', 'Kidney Renal Clear Cell Carcinoma', 'Kidney Renal Papillary Cell Carcinoma', 'Acute Myeloid Leukemia', 'Brain Lower Grade Glioma', 'Liver Hepatocellular Carcinoma', 'Lung Adenocarcinoma', 'Lung Squamous Cell Carcinoma', 'Mesothelioma', 'Ovarian Serous Cystadenocarcinoma', 'Pancreatic Adenocarcinoma', 'Pheochromocytoma and Paraganglioma', 'Prostate Adenocarcinoma', 'Rectum Adenocarcinoma', 'Sarcoma', 'Skin Cutaneous Melanoma', 'Stomach Adenocarcinoma', 'Testicular Germ Cell Tumors', 'Thyroid Carcinoma', 'Thymoma', 'Uterine Corpus Endometrial Carcinoma', 'Uterine Carcinosarcoma', 'Uveal Melanoma' ]
-                                }],
-                                grid: {
-                                    x:40, x2:100, y2:400
-                                },
-                                yAxis : [{
-                                    type : 'value'
-                                }],
-                                series : [{
-                                    name:"number",
-                                    type:"bar",
-                                    data:[200, 300, 200, 300, 200, 300, 200, 300, 200, 300, 200, 300, 200, 300, 200, 300, 200, 300, 200, 300, 200, 300, 200, 300, 200, 300, 200, 300, 200, 300, 200, 300, 200, 300, 200, 300, 200, 300, 200]
-                                }]
-                            };
-                            myChart.setOption(option);
-                        });
-                    </script>
-                </div>
-            </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- <div class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <font>hello</font>
-                    <div id="test" style="width:1200px;height:800px">
-                    <script type="text/javascript">
-                    require.config({
-                        paths:{echarts: "{%static "js/dist/"%}"}
-                    });
-                    require(['echarts', 'echarts/chart/force','echarts/chart/chord',],
-                        DrawEchart);
-                        var chart;
-                        function DrawEchart(ec){
-                            chart = ec.init(document.getElementById('test'));
-                            chart.showLoading({
-                                text:"haha"
-                            });
-                            var option = {
-                                title :{
-                                    text:'test',
-                                    subtext:'testt',
-                                    x:'right',
-                                    y:'bottom'
-                                },
-                                tooltip : {
-                                    trigger: 'item',
-                                    formatter : "{b}"
-                                },
-                                toolbox: {
-                                    show : true,
-                                    feature : {
-                                        restore : {show: true},
-                                        magicType: {
-                                            show: true,
-                                            type: ['force', 'chord'],
-                                            option: {
-                                                chord: {
-                                                    minRadius : 2,
-                                                    maxRadius : 10,
-                                                    ribbonType: false,
-                                                    itemStyle: {
-                                                        normal: {
-                                                            label: {
-                                                                show: true,
-                                                                rotate: true
-                                                            },
-                                                            chordStyle: {
-                                                                opacity: 0.2
-                                                            }
-                                                        }
-                                                    }
-                                                },
-                                                force: {
-                                                    minRadius : 5,
-                                                    maxRadius : 8,
-                                                    itemStyle : {
-                                                        normal : {
-                                                            label: {
-                                                                show: false
-                                                            },
-                                                            linkStyle : {
-                                                                opacity : 0.5
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        },
-                                        saveAsImage : {show: true}
-                                    }
-                                },
-                                legend : {
-                                    data : ['HTMLElement', 'WebGL', 'SVG', 'CSS', 'Other'],
-                                    orient : 'vertical',
-                                    x : 'left'
-                                },
-                                noDataEffect: 'none',
-                                series :[{
-                                    //FIXME No data
-                                    type: 'force',
-                                }],
-                            };
-                            chart.setOption(option);
-                            $.ajax({
-                                type:"GET",
-                                url: 'data.json',
-                                dataType: 'json',
-                                success: function (data) {
-                                    option.series[0] = {
-                                        type: 'force',
-                                        name: 'webkit-dep',
-                                        itemStyle: {
-                                            normal : {
-                                                linkStyle : {
-                                                    opacity : 0.5
-                                                }
-                                            }
-                                        },
-                                        categories: data.categories,
-                                        nodes: data.nodes,
-                                        links: data.links,
-                                        minRadius: 5,
-                                        maxRadius: 8,
-                                        gravity: 1.1,
-                                        scaling: 1.1,
-                                        steps: 20,
-                                        large: true,
-                                        useWorker: true,
-                                        coolDown: 0.995,
-                                        ribbonType: false
-                                    };
-                                    chart.setOption(option);
-                                    //chart.hideLoading();
-                                }
-                            });
-                            chart.setOption(option);
-                        }
-                    </script>
-                </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
     <footer class="section section-info footer ">
       <div class="background-image
             " style="background-image : url(
@@ -578,7 +416,15 @@
               <br>Ut enim ad minim veniam, quis nostrud</p>
           </div>
         </div>
+        <div class="row ">
+          <div class="col-sm-6">
+          <div class="copy-right">
+    			<span>Copyright © 2017-2020</span>
+    		  </div>
+        </div>
+        </div>
       </div>
+
     </footer>
 </body>
 </html>

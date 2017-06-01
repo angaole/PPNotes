@@ -29,7 +29,7 @@ if DEBUG:
     import mimetypes
     mimetypes.add_type("application/font-woff", ".woff", True)
 
-ALLOWED_HOSTS = ['127.0.0.1',]
+ALLOWED_HOSTS = ['127.0.0.1','192.168.2.156',]
 
 # Application definition
 
