@@ -16,8 +16,6 @@
     <link href="{%static "css/bootstrap.css"%}" rel="stylesheet" type="text/css">
     <script src="{%static "js/dist/echarts.js"%}"></script>
     <script src="{%static "/js/mint.js"%}"></script>
-    <script src="{%static "/js/cytoscape.js"%}"></script>
-    <script src="{%static "/js/cytoscape.min.js"%}"></script>
 
 </head>
 
@@ -98,7 +96,7 @@
                         </p>
                     </div> -->
                     <div class="col-md-6">
-                        <div id="pie" style="width:600px;height:700px">
+                        <div id="pie" style="width:500px;height:700px">
                         <script type="text/javascript">
                         require.config({
                             paths:{echarts: "{%static "js/dist/"%}"}
@@ -392,29 +390,53 @@
                 <div class="col-md-6">
                     <div id="main" style="width:600px;height:700px">
                     <script type="text/javascript">
-                    $(function(){
-                        cytoscape({
-                        container : document.getElementById('main'),
-                        elements : {
-                            nodes : [{data: {id: '172', name: 'Tom Cruise', label: 'Person'}},
-                                     {data: {id: '183', title: 'Top Gun', label: 'Movie'}}],
-                            edges : [
-                                {data: {source: '172', target: '183', relationship: 'Acted_In'}}
-                            ]
-                        },
-                        style: [
-                            { selector: 'node[label = "Person"]',
-                              css: {'background-color': '#6FB1FC', 'content': 'data(name)'}
-                            },
-                            { selector: 'node[label = "Movie"]',
-                              css: {'background-color': '#F5A45D', 'content': 'data(title)'}
-                            },
-                            { selector: 'edge',
-                                css: {'content': 'data(relationship)', 'target-arrow-shape': 'triangle'}
-                            }
-                        ],
-                        layout : {name:'cose'}
-                    });});
+                    require.config({
+                        paths : {echarts: "{%static "js/dist/"%}"}
+                    });
+                    require(['echarts', 'echarts/chart/chord', ],
+                        function(ec){
+                            var mychart = ec.init(document.getElementById('main'), 'mint');
+                            var option = {
+                                title : {
+                                    text: 'NetWork',
+                                    x:'center'
+                                },
+                                tooltip : {
+                                    trigger: 'item',
+                                    formatter : "{b}"
+                                },
+                                series : [
+                                    {
+                                        type:'chord',
+                                        ribbonType: false,
+                                        name: 'webkit-dep',
+					minRadius: 2,
+                                         maxRadius: 2,
+                                         gravity: 1.1,
+                                         scaling: 1.1,
+                                         steps: 20,
+                                         large: true,
+                                         useWorker: true,
+                                         coolDown: 0.995,
+                                        itemStyle: {
+                                            normal: {
+                                                label: {
+                                                    show: true,
+                                                    rotate: true
+                                                },
+                                                chordStyle: {
+                                                    opacity: 0.2
+                                                }
+                                            }
+                                        },
+
+                                         
+                                    }
+                                ]
+                            };
+                            mychart.setOption(option);
+                        }
+                    );
                     </script>
                 </div>
             </div>
