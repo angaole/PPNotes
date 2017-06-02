@@ -9,12 +9,23 @@
     <link href="{%static "css/bootstrap.min.css"%}" rel="stylesheet">
     <link href="{%static "css/style.css"%}" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="{%static "/js/cytoscape.js"%}"></script>
     <script type="text/javascript" src="{%static "js/jquery.min.js"%}"></script>
     <script type="text/javascript" src="{%static "/js/bootstrap.min.js"%}"></script>
     <link href="{%static "/css/font-awesome.min.css"%}" rel="stylesheet" type="text/css">
     <link href="{%static "css/bootstrap.css"%}" rel="stylesheet" type="text/css">
     <script src="{%static "js/dist/echarts.js"%}"></script>
 </head>
+<style>
+#cy {
+    width: 500px;
+    height: 600px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+</style>
+
 <body bgcolor="#d0d0d0">
     {% for ll in list0 %}
     <div class="navbar navbar-default navbar-inverse navbar-static-top">
@@ -75,7 +86,11 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-md-6"></div>
+                    <div class="col-md-6"><img id="lncrna" height="200" width="200">
+                        <script type="text/javascript">
+                        document.getElementById('lncrna').setAttribute("src", "/static/"+"{{imagename}}");
+                        </script>
+                    </div>
                 </div>
             </div>
         </div>
@@ -243,8 +258,8 @@
     <div class="section">
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
-                    <div id="main" style="width:1200px;height:800px">
+                <div class="col-md-5">
+                    <div id="main" style="width:500px;height:800px">
                     <script type="text/javascript">
                     require.config({
                         paths:{echarts: "{%static "js/dist/"%}"}
@@ -254,7 +269,7 @@
                             var myChart = ec.init(document.getElementById('main'));
                             var option = {
                                 xAxis : [ {
-                                    axisLabel: {rotate: 10},
+                                    axisLabel: {rotate: 30},
                                     type : 'category',
                                     data : ['Acute Myeloid Leukemia', 'Clear Cell Sarcoma of the Kidney', 'Neuroblastoma', 'Osteosarcoma', 'Rhabdoid Tumor']
                                 }],
@@ -278,13 +293,46 @@
                             myChart.setOption(option);
                         });
                         </script>
+                    </div></div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-6">
+                        <div id="cy" style="width:600px;height:600px">
+                        <script>
+                        $.getJSON('/static/data0.json', function(datas){
+                            var cy = cytoscape({
+                                container: document.getElementById('cy'),
+                                elements:datas,
+                                style: [
+                                    {
+                                        selector: 'node',
+                                        style: {
+                                            'width':10,
+                                            'height':10,
+                                            //shape: 'hexagon',
+                                            'background-color': '#6FB1FC',//'#EDA1ED', '#86B342', '#F5A45D'
+                                            //label: 'data(id)'
+                                        }
+                                    },
+                                    {
+                                        selector : 'edge',
+                                        style : {
+                                            'width' : 0.5,
+                                            //'line-color':'#B1C1F2'
+                                        }
+                                    }
+                                ],
+                                layout: {
+                                    name:'cose'
+                                }
+                            });
+                        })
+                        </script>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
 
 {% endfor %}
 </body>
