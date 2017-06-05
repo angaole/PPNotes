@@ -31,4 +31,8 @@ urlpatterns = [
     url(r'^data/(.+)/', views.data),
     url(r'^test/', views.test),
     url(r'^searchfor/(.+)/$', views.searchfor),
+    url(r'^savegene/(.+)/', views.savegene),
+    url(r'^savedise/(.+)/', views.savedise),
+    url(r'^saveexpre/(.+)/', views.saveexpre),
+    url(r'^showpic/(.+)/(.+)/$', views.showpic),
 ]

@@ -107,6 +107,7 @@
                                 </tr>
                             </tbody>
                         </table>
+
                     </div>
                     <div class="col-md-1"></div>
                     <div class="col-md-4">
@@ -135,11 +136,18 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
+                        <table><tr>
+                        <td width="95%"><h4 align="left"><font color="blue">Diseases and Scores:</font></h4></td>
+                        <td width="5%"><form action="/savedise/{{ ll.ids }}/" method="post">
+                          <button class="btn btn-primary" type="submit" onclick="javascript:location.herf=savedise/{{ ll.ids }}/">Download</a>
+                        </form></td>
+                        </tr></table>
                         <table class="table table-bordered" align="center">
                             <thead>
                                 <tr>
                                     <th>Disease</th>
                                     <th>Score</th>
+                                    <th>Option</th>
                                 </tr>
                             </thead>
                             {% for line in lists %}
@@ -147,6 +155,9 @@
                                 <tr>
                                     <td>{{ line.dise}}</td>
                                     <td>{{ line.dis_sco }}</td>
+                                    <td width="7%">
+                                      <button class="btn btn-primary" onclick="javascript:window.open('/showpic/{{ll.ids}}/{{line.dise}}/')">Detail</a>
+                                    </td>
                                 </tr>
                             </tbody>
                             {% endfor %}
@@ -159,6 +170,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
+                        <table><tr>
+                        <td width="95%"><h4 align="left"><font color="blue">Genes and Scores:</font></h4></td>
+                        <td width="5%"><form action="/savegene/{{ ll.ids }}/" method="post">
+                          <button class="btn btn-primary" type="submit" onclick="javascript:location.herf=savegene/{{ ll.ids }}/">Download</a>
+                        </form></td>
+                        </tr></table>
                         <table class="table table-bordered" align="center">
                             <thead>
                                 <tr>
@@ -179,105 +196,18 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <canvas id="a_canvas" width="500" height="400"></canvas>
-                        <script>
-                            (function (){
-
-                                window.addEventListener("load", function(){
-
-                                // var data = [1.1,2.1,3.1,2.8,1.8,1.3,2.3,3.3,2.6,];
-                                // var xinforma = ['so','me','th','in','gi','do','nt','kn', 'ow'];
-
-                                var data = {{list_expre}};
-                                var xinforma = ['heart', 'lung', 'stomach', 'arms', 'legs']
-
-                                  var a_canvas = document.getElementById('a_canvas');
-                                  var context = a_canvas.getContext("2d");
-
-                                  var gradient = context.createLinearGradient(0,0,0,300);
-
-                                  context.fillStyle = gradient;
-
-                                  context.fillRect(0,0,a_canvas.width,a_canvas.height);
-
-                                  var realheight = a_canvas.height-15;
-                                  var realwidth = a_canvas.width-40;
-                                  // 描绘边框
-                                  var grid_cols = data.length + 1;
-                                  var grid_rows = 4;
-                                  var cell_height = realheight / grid_rows;
-                                  var cell_width = realwidth / grid_cols;
-                                  context.lineWidth = 1;
-                                  context.strokeStyle = "#a0a0a0";
-
-                                  // 结束边框描绘
-                                  context.beginPath();
-
-                                context.moveTo(0,realheight);
-                                context.lineTo(realwidth,realheight);
-
-
-                                    //画竖线
-                                context.moveTo(0,20);
-                                context.lineTo(0,realheight);
-                                context.lineWidth = 1;
-                                context.strokeStyle = "black";
-                                context.stroke();
-
-
-                                var max_v =0;
-
-                                for(var i = 0; i<data.length; i++){
-                                    if (data[i] > max_v) { max_v =data[i]};
-                                }
-                                max_v = max_v * 1.1;
-                                var points = [];
-                                for( var i=0; i < data.length; i++){
-                                    var v= data[i];
-                                    var px = cell_width *　(i +1);
-                                    var py = realheight - realheight*(v / max_v);
-                                    //alert(py);
-                                    points.push({"x":px,"y":py});
-                                }
-
-                                for(var i in points){
-                                    var p = points[i];
-                                    context.beginPath();
-                                    context.fillStyle="green";
-                                    context.fillRect(p.x,p.y,15,realheight-p.y);
-
-                                    context.fill();
-                                }
-                                  //添加文字
-                                for(var i in points)
-                                {
-                                    var p = points[i];
-                                    context.beginPath();
-                                    context.fillStyle="black";
-                                    context.fillText(data[i], p.x + 1, p.y - 15);
-                                    context.fillText(xinforma[i],p.x + 1,realheight+12);
-                                    context.fillText('tissue',realwidth,realheight+12);
-                                    context.fillText('expression',0,10);
-                                }
-                                },false);
-                              })();
-
-                        </script>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
     <div class="section">
         <div class="container">
             <div class="row">
-                <div class="col-md-5">
-                    <h4 align="left">Expression in different tissues:</h4>
-                    <div id="main" style="width:500px;height:600px">
+                <div class="col-md-6">
+                    <table><tr><td width="90%">
+                    <h4 align="left"><font color="blue">Expression in different tissues:</font></h4></td>
+                    <td width="10%"><form action="/saveexpre/{{ ll.ids }}/" method="post">
+                      <button class="btn btn-primary" type="submit" onclick="javascript:location.herf=saveexpre/{{ ll.ids }}/">Download</a>
+                    </form></td>
+                    <table style="BORDER-BOTTOM: #888 1px ridge; BORDER-LEFT: #888 1px ridge; BACKGROUND-COLOR: #ffffff; BORDER-TOP: #888 1px ridge; BORDER-RIGHT: #888 1px ridge">
+                    <tr><td>
+                    <div id="main" style="width:550px;height:600px">
                     <script type="text/javascript">
                     require.config({
                         paths:{echarts: "{%static "js/dist/"%}"}
@@ -286,6 +216,12 @@
                         function(ec){
                             var myChart = ec.init(document.getElementById('main'));
                             var option = {
+                                toolbox :{
+                                    show : true,
+                                    feature : {
+                                        saveAsImage : {show: true, title : 'Save as PNG Image'}
+                                    }
+                                },
                                 xAxis : [ {
                                     axisLabel: {rotate: 30},
                                     type : 'category',
@@ -311,9 +247,9 @@
                             myChart.setOption(option);
                         });
                         </script>
-                    </div></div>
-                    <div class="col-md-1"></div>
+                    </div></td></tr></table></div>
                     <div class="col-md-6">
+                        <h4 align="left"><font color="blue">what:</font></h4>
                         <div id="cy" style="width:600px;height:600px">
                         <script>
                         $.getJSON('/static/data0.json', function(datas){
@@ -345,8 +281,7 @@
                             });
                         })
                         </script>
-                        </div>
-                    </div>
+                    </div></div>
                 </div>
             </div>
         </div>

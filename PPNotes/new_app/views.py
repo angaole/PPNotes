@@ -179,3 +179,53 @@ def data(request, filename):
         return response
     else:
         return HttpResponse(u'cannot find the file')
+
+def savegene(request, ids):
+    response = HttpResponse()
+    response['Content-Disposition'] = 'attachment;filename='+ids+'_gene.txt'
+    list_gen = genes.objects.filter(ids=ids)
+    f = open("downfile/file", 'w')
+    for i in list_gen:
+        f.write(i.gene+"\t"+i.gen_sco+"\n")
+    f.close()
+    full_path = "downfile/file"
+    response['Content-Length'] = os.path.getsize(full_path)
+    content = open(full_path, 'rb').read()
+    response.write(content)
+    os.system("rm downfile/file")
+    return response
+
+def saveexpre(request, ids):
+    response = HttpResponse()
+    response['Content-Disposition'] = 'attachment;filename='+ids+'_gene.zip'
+    list0 = seqe.objects.filter(ids=ids)
+    for line in list0:
+        strs = line.expre
+    list_expre = strs.split()
+    f = open("downfile/file", 'w')
+    f.write(list_expre)
+    f.close()
+    full_path = "downfile/file"
+    response['Content-Length'] = os.path.getsize(full_path)
+    content = open(full_path, 'rb').read()
+    response.write(content)
+    os.system("rm downfile/file")
+    return response
+
+def savedise(request, ids):
+    response = HttpResponse()
+    response['Content-Disposition'] = 'attachment;filename='+ids+'_disease.txt'
+    lists = messa.objects.filter(ids=ids)
+    f = open("downfile/file", 'w')
+    for i in lists:
+        f.write(i.dise+"\t"+i.dis_sco+"\n")
+    f.close()
+    full_path = "downfile/file"
+    response['Content-Length'] = os.path.getsize(full_path)
+    content = open(full_path, 'rb').read()
+    response.write(content)
+    os.system("rm downfile/file")
+    return response
+
+def showpic(request, ids, dise):
+    return render_to_response('help.html')
