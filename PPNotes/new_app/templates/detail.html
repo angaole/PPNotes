@@ -26,7 +26,8 @@
 }
 </style>
 
-<body bgcolor="#d0d0d0">
+<body>
+
     {% for ll in list0 %}
     <div class="navbar navbar-default navbar-inverse navbar-static-top">
         <div class="container">
@@ -60,8 +61,12 @@
           </div>
         </div>
       </div>
+
     <div class="section">
         <div class="container">
+            <table style="BORDER-BOTTOM: #888 2px ridge; BORDER-LEFT: #888 2px ridge; BACKGROUND-COLOR: #ffffff; BORDER-TOP: #888 2px ridge; BORDER-RIGHT: #888 2px ridge">
+            <tr>
+                <td>
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="text-center">{{ ll.ids }}
@@ -72,23 +77,42 @@
         <div class="section">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-6">
-                        <table class="table  table-bordered" style="table-layout:fixed;word-wrap:break-word;">
+                    <div class="col-md-7">
+                        <h4 align="left"><font color="blue">Basic information:</font></h4>
+                        <table class="table  table-bordered" style="table-layout:fixed;word-wrap:break-word;align:center;" align="center">
                             <tbody>
                                 <tr>
-                                    <td>Lncrna ID</td>
-                                    <td>{{ ll.ids }}</td>
+                                    <td width="30%">Lncrna ID</td>
+                                    <td width="70%">{{ ll.ids }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Location</td>
-                                    <td>{{ ll.locas }}</td>
+                                    <td width="30%">Location</td>
+                                    <td width="70%">{{ ll.locas }}</td>
+                                </tr>
+                                <tr>
+                                    <td width="30%">Strand</td>
+                                    <td width="70%"></td>
+                                </tr>
+                                <tr>
+                                    <td width="30%">Class</td>
+                                    <td width="70%"></td>
+                                </tr>
+                                <tr>
+                                    <td width="30%">Length</td>
+                                    <td width="70%"></td>
+                                </tr>
+                                <tr>
+                                    <td width="30%">Exons</td>
+                                    <td width="70%"></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-md-6"><img id="lncrna" height="200" width="200">
+                    <div class="col-md-1"></div>
+                    <div class="col-md-4">
+                        <img id="lncrna" height="300" width="300">
                         <script type="text/javascript">
-                        document.getElementById('lncrna').setAttribute("src", "/static/"+"{{imagename}}");
+                        document.getElementById('lncrna').setAttribute("src", "/static/pictures/"+"{{ll.ids}}"+".png");
                         </script>
                     </div>
                 </div>
@@ -98,18 +122,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <table class="table table-bordered" style="table-layout:fixed;word-wrap:break-word;">
-                            <thead>
-                                <tr>
-                                    <td>Sequence</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style="word-wrap:break-word; overflow:hidden; width: 600px;">{{ ll.seq }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <h4 align="left"><font color="blue">RNA Sequence:</font></h4>
+                        <textarea rows="10" cols="160">
+                            {{ ll.seq }}
+                        </textarea>
+
                     </div>
                 </div>
             </div>
@@ -118,7 +135,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered" align="center">
                             <thead>
                                 <tr>
                                     <th>Disease</th>
@@ -142,7 +159,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered" align="center">
                             <thead>
                                 <tr>
                                     <th>Gene</th>
@@ -259,7 +276,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5">
-                    <div id="main" style="width:500px;height:800px">
+                    <h4 align="left">Expression in different tissues:</h4>
+                    <div id="main" style="width:500px;height:600px">
                     <script type="text/javascript">
                     require.config({
                         paths:{echarts: "{%static "js/dist/"%}"}
@@ -274,7 +292,7 @@
                                     data : ['Acute Myeloid Leukemia', 'Clear Cell Sarcoma of the Kidney', 'Neuroblastoma', 'Osteosarcoma', 'Rhabdoid Tumor']
                                 }],
                                 grid: {
-                                    x:40, x2:100, y2:400
+                                    x:40, x2:40, y2:120
                                 },
                                 yAxis : [{
                                     type : 'value'
@@ -332,8 +350,11 @@
                 </div>
             </div>
         </div>
+    </td>
+</tr>
+    </table>
     </div>
-
+    </div>
 {% endfor %}
 </body>
 </html>

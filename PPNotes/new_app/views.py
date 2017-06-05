@@ -121,8 +121,7 @@ def result(request, ids):
         list_expre = [float(i) for i in list_expre]
         list_gen = genes.objects.filter(ids=ids)
         print list_gen
-        imagename = "lnc0"
-        c = {"lists":lists, "list0":list0, "list_gen":list_gen, "list_expre":list_expre, "imagename":imagename}
+        c = {"lists":lists, "list0":list0, "list_gen":list_gen, "list_expre":list_expre}
         return render_to_response('detail.html', c)
 
 def home(request):
