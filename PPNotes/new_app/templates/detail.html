@@ -32,46 +32,43 @@
 </style>
 
 <body>
-
     {% for ll in list0 %}
     <div class="navbar navbar-default navbar-inverse navbar-static-top">
         <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand"><span>Lnc2Catlas</span></a>
-          </div>
-          <div class="collapse navbar-collapse" id="navbar-ex-collapse">
-            <ul class="nav navbar-nav navbar-right ">
-              <li>
-                <a href="/home/">Home</a>
-              </li>
-              <li>
-                <a href="/browse/1/20/">Browse</a>
-              </li>
-              <li class="active ">
-                <a href="/search/">Search</a>
-              </li>
-              <li>
-                <a href="/download/">Download</a>
-              </li>
-              <li>
-                <a href="/help/">Help</a>
-              </li>
-            </ul>
-          </div>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand"><span>Lnc2Catlas</span></a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                <ul class="nav navbar-nav navbar-right ">
+                    <li>
+                        <a href="/home/">Home</a>
+                    </li>
+                    <li>
+                        <a href="/browse/1/20/">Browse</a>
+                    </li>
+                    <li class="active ">
+                        <a href="/search/">Search</a>
+                    </li>
+                    <li>
+                        <a href="/download/">Download</a>
+                    </li>
+                    <li>
+                        <a href="/help/">Help</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
-
+    </div>
     <div class="section">
         <div class="container">
             <table style="BORDER-BOTTOM: #888 2px ridge; BORDER-LEFT: #888 2px ridge; BACKGROUND-COLOR: #ffffff; BORDER-TOP: #888 2px ridge; BORDER-RIGHT: #888 2px ridge">
-            <tr>
-                <td>
+            <tr><td>
             <div class="row">
                 <div class="col-md-12">
                     <h1 class="text-center">{{ ll.ids }}
@@ -79,12 +76,12 @@
                     </h1>
                 </div>
             </div>
-        <div class="section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-7">
-                        <h4 align="left"><font color="blue">Basic information:</font></h4>
-                        <table class="table  table-bordered" style="table-layout:fixed;word-wrap:break-word;align:center;" align="center">
+            <div class="section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <h4 align="left"><font color="blue">Basic information:</font></h4>
+                            <table class="table  table-bordered" style="table-layout:fixed;word-wrap:break-word;align:center;" align="center">
                             <tbody>
                                 <tr>
                                     <td width="30%">Lncrna ID</td>
@@ -111,33 +108,29 @@
                                     <td width="70%">{{ ll.exons }}</td>
                                 </tr>
                             </tbody>
-                        </table>
-
-                    </div>
-                    <div class="col-md-1"></div>
-                    <div class="col-md-4">
-                        <img id="lncrna" height="300" width="300">
-                        <script type="text/javascript">
-                        document.getElementById('lncrna').setAttribute("src", "/static/pictures/"+"{{ll.ids}}"+".png");
-                        </script>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h4 align="left"><font color="blue">RNA Sequence:</font></h4>
-                        <textarea class="comments" rows=10 cols=160>
-                            {{ ll.seq }}
-                        </textarea>
-
+                            </table>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-4">
+                            <img id="lncrna" height="300" width="300">
+                            <script type="text/javascript">
+                                document.getElementById('lncrna').setAttribute("src", "/static/pictures/"+"{{ll.ids}}"+".png");
+                            </script>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="section">
+            <div class="section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4 align="left"><font color="blue">RNA Sequence:</font></h4>
+                            <textarea class="comments" rows=10 cols=160>{{ ll.seq }}</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -170,50 +163,47 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <table><tr>
-                        <td width="95%"><h4 align="left"><font color="blue">Genes and Scores:</font></h4></td>
-                        <td width="5%"><form action="/savegene/{{ ll.ids }}/" method="post">
-                          <button class="btn btn-primary" type="submit" onclick="javascript:location.herf=savegene/{{ ll.ids }}/">Download</a>
-                        </form></td>
-                        </tr></table>
-                        <table class="table table-bordered" align="center">
-                            <thead>
-                                <tr>
+            </div>
+            <div class="section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table><tr>
+                                <td width="95%"><h4 align="left"><font color="blue">Genes and Scores:</font></h4></td>
+                                <td width="5%"><form action="/savegene/{{ ll.ids }}/" method="post">
+                                    <button class="btn btn-primary" type="submit" onclick="javascript:location.herf=savegene/{{ ll.ids }}/">Download</a>
+                                    </form></td>
+                            </tr></table>
+                            <table class="table table-bordered" align="center">
+                                <thead><tr>
                                     <th>Gene</th>
                                     <th>Score</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for lin in list_gen %}
-                                <tr>
-                                    <td>{{ lin.gene}}</td>
-                                    <td>{{ lin.gen_sco }}</td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
+                                </tr></thead>
+                                <tbody>
+                                    {% for lin in list_gen %}
+                                    <tr><td>{{ lin.gene}}</td>
+                                        <td>{{ lin.gen_sco }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    <div class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <table><tr><td width="90%">
-                    <h4 align="left"><font color="blue">Expression in different tissues:</font></h4></td>
-                    <td width="10%"><form action="/saveexpre/{{ ll.ids }}/" method="post">
-                      <button class="btn btn-primary" type="submit" onclick="javascript:location.herf=saveexpre/{{ ll.ids }}/">Download</a>
-                    </form></td>
-                    <table style="BORDER-BOTTOM: #888 1px ridge; BORDER-LEFT: #888 1px ridge; BACKGROUND-COLOR: #ffffff; BORDER-TOP: #888 1px ridge; BORDER-RIGHT: #888 1px ridge">
-                    <tr><td>
-                    <div id="main" style="width:550px;height:600px">
-                    <script type="text/javascript">
+            <div class="section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table><tr><td width="90%">
+                                <h4 align="left"><font color="blue">Expression in different tissues:</font></h4></td>
+                                <td width="5%"><form action="/saveexpre/{{ ll.ids }}/" method="post">
+                                    <button class="btn btn-primary" type="submit" onclick="javascript:location.herf=saveexpre/{{ ll.ids }}/">Download</a>
+                                    </form></td></tr></table>
+                            <table style="BORDER-BOTTOM: #888 1px ridge; BORDER-LEFT: #888 1px ridge; BACKGROUND-COLOR: #ffffff; BORDER-TOP: #888 1px ridge; BORDER-RIGHT: #888 1px ridge">
+                                <tr><td>
+                                    <div id="main" style="width:1140px;height:600px">
+                                        <script type="text/javascript">
                     require.config({
                         paths:{echarts: "{%static "js/dist/"%}"}
                     });
@@ -252,11 +242,18 @@
                             myChart.setOption(option);
                         });
                         </script>
-                    </div></td></tr></table></div>
-                    <div class="col-md-6">
-                        <h4 align="left"><font color="blue">what:</font></h4>
-                        <div id="cy" style="width:600px;height:600px">
-                        <script>
+                        </div></td></tr></table></div>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4 align="left"><font color="blue">what:</font></h4>
+                            
+                            <div id="cy" style="width:1200px;height:600px">
+                                <script>
                         $.getJSON('/static/data0.json', function(datas){
                             var cy = cytoscape({
                                 container: document.getElementById('cy'),
@@ -286,12 +283,12 @@
                             });
                         })
                         </script>
-                    </div></div>
+                            </div></div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </td>
-</tr>
+            </td>
+        </tr>
     </table>
     </div>
     </div>

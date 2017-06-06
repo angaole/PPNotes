@@ -117,8 +117,7 @@
                     <form role="form" action="" method="post" name="form1">
                       <div class="form-group">
                         <div class="input-group">
-                          <!-- <input type="hidden" class="form-control" name="fuck"> -->
-                          <input type="text" class="form-control" name="content">
+                            <input id="txtKeyword" type="text" class="form-control" name="content" onkeyup="selectItem(this.value, event)" style="position:absolute; width:500px;" value="ENST00000417324.1" onFocus="if(value==defaultValue){value='';this.style.color='#000'}" onBlur="if(!value){value=defaultValue;this.style.color='#999'}" style="color:#999999">
                           <span class="input-group-btn">
                             <button class="btn btn-success" type="submit" onclick="setaction()">Search</a>
                           </span>

@@ -210,7 +210,7 @@
             <form role="form" action="" method="post" name="form1">
               <div class="form-group">
                 <div class="input-group">
-                  <input id="txtKeyword" type="text" class="form-control" name="content" onkeyup="selectItem(this.value, event)" style="position:absolute; width:500px;">
+                    <input id="txtKeyword" type="text" class="form-control" name="content" onkeyup="selectItem(this.value, event)" style="position:absolute; width:500px;" value="ENST00000417324.1" onFocus="if(value==defaultValue){value='';this.style.color='#000'}" onBlur="if(!value){value=defaultValue;this.style.color='#999'}" style="color:#999999">
                   <ul id="ulItems" style="list-style-type:none;display: none; border:1px solid #cecece; border-top:none; "></ul>
                   <span class="input-group-btn">
                     <button class="btn btn-success" type="submit" onclick="setaction()" style="position:absolute; left:500px; top:0px;">Search</a>

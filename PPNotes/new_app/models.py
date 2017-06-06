@@ -21,7 +21,7 @@ class seqe(models.Model):
     classs = models.CharField(max_length=20, default="none")
     length = models.CharField(max_length=5, default="1")
     exons = models.CharField(max_length=2, default="0")
-    expre = models.CharField(max_length=34)
+    expre = models.CharField(max_length=500)
     seq = models.TextField()
 
 class genes(models.Model):

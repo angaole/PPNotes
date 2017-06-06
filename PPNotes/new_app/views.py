@@ -113,14 +113,12 @@ def searchfor(request, dise):
 def result(request, ids):
     if request.method=="POST":
         lists = messa.objects.filter(ids=ids)
-        print lists
         list0 = seqe.objects.filter(ids=ids)
         for line in list0:
             strs = line.expre
         list_expre = strs.split()
         list_expre = [float(i) for i in list_expre]
         list_gen = genes.objects.filter(ids=ids)
-        print list_gen
         c = {"lists":lists, "list0":list0, "list_gen":list_gen, "list_expre":list_expre}
         return render_to_response('detail.html', c)
 
