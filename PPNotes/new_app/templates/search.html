@@ -154,11 +154,27 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-2">
-                <select style="font-size:20px;", id="mysel">
+                <select style="font-size:20px;", id="mysel" onchange="changevalue()">
                     <option value="1">lncrna</option>
                     <option value="2">SNP</option>
                     <option value="3">disease</option>
                 </select>
+                <script type="text/javascript">
+                function changevalue(){
+                    var myselect = document.getElementById('mysel');
+                    var index = myselect.selectedIndex;
+                    var val = myselect.options[index].value;
+                    if (val=="1"){
+                        document.getElementById('txtKeyword').setAttribute("value", "ENST00000417324.1");
+                    }
+                    if (val=="2"){
+                        document.getElementById('txtKeyword').setAttribute("value", "hahasnp");
+                    }
+                    if (val=="3"){
+                        document.getElementById('txtKeyword').setAttribute("value", "Neuroblastoma");
+                    }
+                }
+                </script>
                 </div>
                 <script type="text/javascript">
                 function setaction(){

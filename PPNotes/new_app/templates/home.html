@@ -78,11 +78,27 @@
            <div class="row">
                <div class="col-md-2"></div>
                <div class="col-md-2">
-                   <select style="font-size:20px;", id="mysel">
+                   <select style="font-size:20px;", id="mysel" onchange="changevalue()">
                        <option value="1">lncrna</option>
                        <option value="2">SNP</option>
                        <option value="3">disease</option>
                    </select>
+                   <script type="text/javascript">
+                   function changevalue(){
+                       var myselect = document.getElementById('mysel');
+                       var index = myselect.selectedIndex;
+                       var val = myselect.options[index].value;
+                       if (val=="1"){
+                           document.getElementById('txtKeyword').setAttribute("value", "ENST00000417324.1");
+                       }
+                       if (val=="2"){
+                           document.getElementById('txtKeyword').setAttribute("value", "hahasnp");
+                       }
+                       if (val=="3"){
+                           document.getElementById('txtKeyword').setAttribute("value", "Neuroblastoma");
+                       }
+                   }
+                   </script>
                    </div>
                    <script type="text/javascript">
                    function setaction(){
@@ -96,18 +112,14 @@
                        }
                        else
                         {if(val=="1"){
-                            //document.getElementByName("fuck").value="1";
                             var tem = "/searchby/1/"+String(conten)+"/";
-                            //alert(tem);
                             document.form1.action=tem;
                         }
                         if(val=="2"){
-                            //document.getElementByName("fuck").value="2";
                             var tem = "/searchby/2/"+String(conten)+"/";
                             document.form1.action=tem;
                         }
                         if(val=="3"){
-                            //document.getElementByName("fuck").value="3";
                             var tem = "/searchby/3/"+String(conten)+"/";
                             document.form1.action=tem;
                         }
@@ -118,7 +130,7 @@
                <form role="form" action="" method="post" name="form1">
                  <div class="form-group">
                    <div class="input-group">
-                     <input id="txtKeyword" type="text" class="form-control" name="content" onkeyup="selectItem(this.value, event)" style="position:absolute; width:500px;">
+                     <input id="txtKeyword" type="text" class="form-control" name="content" onkeyup="selectItem(this.value, event)" style="position:absolute; width:500px;" value="ENST00000417324.1" onFocus="if(value==defaultValue){value='';this.style.color='#000'}" onBlur="if(!value){value=defaultValue;this.style.color='#999'}" style="color:#999999">
                      <ul id="ulItems" style="list-style-type:none;display: none; border:1px solid #cecece; border-top:none; "></ul>
                      <span class="input-group-btn">
                        <button class="btn btn-success" type="submit" onclick="setaction()" style="position:absolute; left:500px; top:0px;">Search</a>
