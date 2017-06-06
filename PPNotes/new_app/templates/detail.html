@@ -24,6 +24,11 @@
     top: 0px;
     left: 0px;
 }
+.comments {
+    width:100%;/*自动适应父布局宽度*/
+    overflow:auto;
+    word-break:break-all;
+}
 </style>
 
 <body>
@@ -124,7 +129,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h4 align="left"><font color="blue">RNA Sequence:</font></h4>
-                        <textarea rows="10" cols="160">
+                        <textarea class="comments" rows=10 cols=160>
                             {{ ll.seq }}
                         </textarea>
 

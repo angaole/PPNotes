@@ -75,6 +75,63 @@
    </div>
    <div class="section">
        <div class="container">
+           <div class="row">
+               <div class="col-md-2"></div>
+               <div class="col-md-2">
+                   <select style="font-size:20px;", id="mysel">
+                       <option value="1">lncrna</option>
+                       <option value="2">SNP</option>
+                       <option value="3">disease</option>
+                   </select>
+                   </div>
+                   <script type="text/javascript">
+                   function setaction(){
+                       var myselect = document.getElementById('mysel');
+                       var index = myselect.selectedIndex;
+                       var val = myselect.options[index].value;
+                       var conten = form1.content.value;
+                       if(conten=="")
+                       {
+                           alert("Please input what you want to search")
+                       }
+                       else
+                        {if(val=="1"){
+                            //document.getElementByName("fuck").value="1";
+                            var tem = "/searchby/1/"+String(conten)+"/";
+                            //alert(tem);
+                            document.form1.action=tem;
+                        }
+                        if(val=="2"){
+                            //document.getElementByName("fuck").value="2";
+                            var tem = "/searchby/2/"+String(conten)+"/";
+                            document.form1.action=tem;
+                        }
+                        if(val=="3"){
+                            //document.getElementByName("fuck").value="3";
+                            var tem = "/searchby/3/"+String(conten)+"/";
+                            document.form1.action=tem;
+                        }
+                       form1.submit();}
+                   }
+                   </script>
+             <div class=" col-md-6">
+               <form role="form" action="" method="post" name="form1">
+                 <div class="form-group">
+                   <div class="input-group">
+                     <input id="txtKeyword" type="text" class="form-control" name="content" onkeyup="selectItem(this.value, event)" style="position:absolute; width:500px;">
+                     <ul id="ulItems" style="list-style-type:none;display: none; border:1px solid #cecece; border-top:none; "></ul>
+                     <span class="input-group-btn">
+                       <button class="btn btn-success" type="submit" onclick="setaction()" style="position:absolute; left:500px; top:0px;">Search</a>
+                     </span>
+                   </div>
+                 </div>
+               </form>
+             </div>
+           </div>
+         </div>
+       </div>
+   <div class="section">
+       <div class="container">
          <div class="row">
            <div class="col-md-7">
              <div id="pie" style="width:700px;height:700px">
@@ -379,25 +436,8 @@
           </div>
          </div>
        </div>
-     </div>
-     <div class="section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4">
-            <h1>A title</h1>
-            <h3>A subtitle</h3>
-            <p class="lead">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-              ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
-              dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies
-              nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
-              Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In
-              enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum
-              felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus
-              elementum semper nisi.</p>
-          </div>
-          <div class="col-md-1"></div>
-          <div class="col-md-7">
-          <div id="cy" style="width:700px;height:700px">
+   </div>
+          <!-- <div id="cy" style="width:700px;height:700px">
           <script>
           $.getJSON('/static/data0.json', function(datas){
               var cy = cytoscape({
@@ -428,12 +468,7 @@
               });
           })
           </script>
-          </div>
-      </div>
-        </div>
-      </div>
-    </div>
-
+          </div> -->
     <footer class="section section-info footer ">
       <div class="container ">
         <div class="row ">
