@@ -91,19 +91,19 @@
                                 </tr>
                                 <tr>
                                     <td width="30%">Strand</td>
-                                    <td width="70%"></td>
+                                    <td width="70%">{{ ll.strand }}</td>
                                 </tr>
                                 <tr>
                                     <td width="30%">Class</td>
-                                    <td width="70%"></td>
+                                    <td width="70%">{{ ll.classs }}</td>
                                 </tr>
                                 <tr>
                                     <td width="30%">Length</td>
-                                    <td width="70%"></td>
+                                    <td width="70%">{{ ll.length }}</td>
                                 </tr>
                                 <tr>
                                     <td width="30%">Exons</td>
-                                    <td width="70%"></td>
+                                    <td width="70%">{{ ll.exons }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -219,13 +219,13 @@
                                 toolbox :{
                                     show : true,
                                     feature : {
-                                        saveAsImage : {show: true, title : 'Save as PNG Image'}
+                                        saveAsImage : {show: true}
                                     }
                                 },
                                 xAxis : [ {
                                     axisLabel: {rotate: 30},
                                     type : 'category',
-                                    data : ['Acute Myeloid Leukemia', 'Clear Cell Sarcoma of the Kidney', 'Neuroblastoma', 'Osteosarcoma', 'Rhabdoid Tumor']
+                                    data : ['Blood','Kidney','Nervous,System','Bone','Adrenal,Gland','Bladder','Breast','Cervix','Bile,Duct','Colorectal','Lymph,Nodes','Esophagus','Brain','Head,and,Neck','Bone,Marrow','Liver','Lung','Pleura','Ovary','Pancreas','Prostate','Soft,Tissue,Skin','Stomach','Testis','Thyroid','Thymus','Uterus','Eye']
                                 }],
                                 grid: {
                                     x:40, x2:40, y2:120

@@ -12,10 +12,15 @@ class messa(models.Model):
     dise = models.CharField(max_length=80)
     dis_sco = models.CharField(max_length=20)
     snp = models.CharField(max_length=120)
+    snpid = models.CharField(max_length=34, default="1")
 
 class seqe(models.Model):
     ids = models.CharField(max_length=34, primary_key=True)
     locas = models.CharField(max_length=34, default="chr")
+    strand = models.CharField(max_length=3, default="+")
+    classs = models.CharField(max_length=20, default="none")
+    length = models.CharField(max_length=5, default="1")
+    exons = models.CharField(max_length=2, default="0")
     expre = models.CharField(max_length=34)
     seq = models.TextField()
 
