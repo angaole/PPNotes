@@ -60,66 +60,13 @@
         <div class="section">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-2">
-                        <select style="font-size:20px;", id="mysel" onchange="changevalue()">
-                            <option value="1">lncrna</option>
-                            <option value="2">SNP</option>
-                            <option value="3">disease</option>
-                        </select>
-                        <script type="text/javascript">
-                        function changevalue(){
-                            var myselect = document.getElementById('mysel');
-                            var index = myselect.selectedIndex;
-                            var val = myselect.options[index].value;
-                            if (val=="1"){
-                                document.getElementById('txtKeyword').setAttribute("value", "for example:ENST00000417324.1");
-                            }
-                            if (val=="2"){
-                                document.getElementById('txtKeyword').setAttribute("value", "for example:hahasnp");
-                            }
-                            if (val=="3"){
-                                document.getElementById('txtKeyword').setAttribute("value", "for example:Neuroblastoma");
-                            }
-                        }
-                        </script>
-                        </div>
-                        <script type="text/javascript">
-                        function setaction(){
-                            var myselect = document.getElementById('mysel');
-                            var index = myselect.selectedIndex;
-                            var val = myselect.options[index].value;
-                            var conten = form1.content.value.replace("for example:", "");
-                            if(conten==""){
-                                alert("Please input what you want to search")
-                            }
-                            else
-                            {if(val=="1"){
-                                 //document.getElementByName("fuck").value="1";
-                                 var tem = "/searchby/1/"+String(conten)+"/";
-                                 //alert(tem);
-                                 document.form1.action=tem;
-                             }
-                             if(val=="2"){
-                                 //document.getElementByName("fuck").value="2";
-                                 var tem = "/searchby/2/"+String(conten)+"/";
-                                 document.form1.action=tem;
-                             }
-                             if(val=="3"){
-                                 //document.getElementByName("fuck").value="3";
-                                 var tem = "/searchby/3/"+String(conten)+"/";
-                                 document.form1.action=tem;
-                             }
-                            form1.submit();}
-                        }
-                        </script>
-                  <div class=" col-md-6">
-                    <form role="form" action="" method="post" name="form1">
-                      <div class="form-group">
-                        <div class="input-group">
-                            <input HaoyuSug='A8A4EBDCB13A40AAB7CFB2ED12F273CE' id="txtKeyword" class="form-control" name="content" style="position:absolute; width:500px;" value="for example:ENST00000417324.1" onFocus="if(value==defaultValue){value='';this.style.color='#000'}" onBlur="if(!value){value=defaultValue;this.style.color='#999'}">
-                          <span class="input-group-btn">
-                            <button class="btn btn-success" type="submit" onclick="setaction()">Search</a>
+                    <div class=" col-md-12">
+                      <form role="form" action="" method="post" name="form1">
+                        <div class="form-group">
+                          <div class="input-group">
+                            <input HaoyuSug='A8A4EBDCB13A40AAB7CFB2ED12F273CE' id="txtKeyword" class="form-control" name="content" value="for example:ENST00000417324.1" onFocus="if(value==defaultValue){value='';this.style.color='#000'}" onBlur="if(!value){value=defaultValue;this.style.color='#999'}">
+                            <span class="input-group-btn">
+                              <button class="btn btn-success" type="submit" onclick="setaction()">Search</a>
                           </span>
                         </div>
                       </div>
@@ -134,7 +81,7 @@
                     <div class="col-md-3"></div>
                   <div class="col-md-6">
                     <p><font size=4>
-                        Results searched by {{ran}} <font color="blue">{{contents}}.</font></font>
+                        Results searched by <font color="blue">{{contents}}.</font></font>
                     </p>
                   </div>
                   <div class="col-md-3"></div>

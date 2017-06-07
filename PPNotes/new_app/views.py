@@ -17,22 +17,14 @@ import data_helper
 def search(request):
     return render_to_response('search.html')
 
-def searchby(request, a, conten):
+def searchby(request, conten):
     content = str(conten)
     if content=="":
         return render_to_response('search.html')
     elif content.find("!")!=-1 or content.find("@")!=-1!=-1 or content.find("$")!=-1 or content.find("%")!=-1 or content.find("^")!=-1 or content.find("*")!=-1 or content.find(",")!=-1 or content.find("/")!=-1:
         return render_to_response('search_error.html')
     else:
-        if a=="1":
-            lists1 = messa.objects.filter(Q(ids__icontains=content)|Q(alias__icontains=content))
-            ran = "lncRNA"
-        if a=="2":
-            lists1 = messa.objects.filter(Q(snp__icontains=content))
-            ran = "SNP"
-        if a=="3":
-            lists1 = messa.objects.filter(Q(dise__icontains=content))
-            ran = "Disease"
+        lists1 = messa.objects.filter(Q(ids__icontains=content)|Q(alias__icontains=content)|Q(snp__icontains=content)|Q(dise__icontains=content))
         if len(lists1)==0:
             return render_to_response('search_none.html')
         else:
@@ -67,10 +59,10 @@ def searchby(request, a, conten):
                 if page==str(num_pages-2):
                     asa = [1, num_pages-4, num_pages-3, num_pages-2, num_pages-1, num_pages]
                 print asa
-                c = {"lists":lists, "asa":asa, "ran":ran, "contents":content}
+                c = {"lists":lists, "asa":asa, "contents":content}
                 return render(request, 'result.html', c)
             else:
-                c = {"lists":lists1, "ran":ran, "contents":content}
+                c = {"lists":lists1, "contents":content}
                 return render_to_response('result_single.html', c)
 
 def searchfor(request, dise):
