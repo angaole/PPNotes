@@ -13,97 +13,6 @@
     <script type="text/javascript" src="{%static "js/jquery.min.js"%}"></script>
     <link href="{%static "/css/font-awesome.min.css"%}" rel="stylesheet" type="text/css">
     <link href="{%static "css/bootstrap.css"%}" rel="stylesheet" type="text/css">
-    <script type="text/javascript" language="javascript">
-        var currentSelIndex = -1;
-        var oldSelIndex = -1;
-
-        function selectItem(keyword, event) {
-            if (keyword == "") {
-                document.getElementById("ulItems").style.display = "none";
-                return;
-            }
-            else {
-                var liLength = document.getElementById("ulItems").getElementsByTagName("li").length; //获取列表数量
-                if ((event.keyCode == 38 || event.keyCode == 40) && document.getElementById("ulItems").style.display != "none") {
-                    if (liLength > 0) {
-                        oldSelIndex = currentSelIndex;
-                        //上移
-                        if (event.keyCode == 38) {
-                            if (currentSelIndex == -1) {
-                                currentSelIndex = liLength - 1;
-                            }
-                            else {
-                                currentSelIndex = currentSelIndex - 1;
-                                if (currentSelIndex < 0) {
-                                    currentSelIndex = liLength - 1;
-                                }
-                            }
-                            if (currentSelIndex != -1) {
-                                document.getElementById("li_" + currentSelIndex).style.backgroundColor = "#cbf3fd";
-                                document.getElementById("txtKeyword").value = document.getElementById("li_" + currentSelIndex).innerText;
-                            }
-                            if (oldSelIndex != -1) {
-                                document.getElementById("li_" + oldSelIndex).style.backgroundColor = "#ffffff";
-                            }
-                        }
-                        //下移
-                        if (event.keyCode == 40) {
-                            if (currentSelIndex == liLength - 1) {
-                                currentSelIndex = 0;
-                            }
-                            else {
-                                currentSelIndex = currentSelIndex + 1;
-                                if (currentSelIndex > liLength - 1) {
-                                    currentSelIndex = 0;
-                                }
-                            }
-                            if (currentSelIndex != -1) {
-                                document.getElementById("li_" + currentSelIndex).style.backgroundColor = "#cbf3fd";
-                                document.getElementById("txtKeyword").value = document.getElementById("li_" + currentSelIndex).innerText;
-                            }
-                            if (oldSelIndex != -1) {
-                                document.getElementById("li_" + oldSelIndex).style.backgroundColor = "#ffffff";
-                            }
-                        }
-                    }
-                }
-                else if (event.keyCode == 13) {
-                    if (document.getElementById("ulItems").style.display != "none" && liLength > 0 && currentSelIndex != -1) {
-                        document.getElementById("txtKeyword").value = document.getElementById("li_" + currentSelIndex).innerText;
-                        document.getElementById("ulItems").style.display = "none";
-                        currentSelIndex = -1;
-                        oldSelIndex = -1;
-                    }
-                }
-                else {
-                    autoComplete(keyword);
-                    document.getElementById("ulItems").style.display = "";
-                    currentSelIndex = -1;
-                    oldSelIndex = -1;
-                }
-            }
-        }
-
-        function autoComplete(keyword) {
-            var myArray = new Array("Acute Myeloid Leukemia", "Clear Cell Sarcoma of the Kidney", "Neuroblastoma", "Osteosarcoma", "Rhabdoid Tumor", "High-Risk Wilms Tumor", "Adrenocortical Carcinoma", "Bladder Urothelial Carcinoma", "Breast Invasive Carcinoma", "Cervical Squamous Cell Carcinoma and Endocervical Adenocarcinoma", "Cholangiocarcinoma", "Colon Adenocarcinoma", "Lymphoid Neoplasm Diffuse Large B-cell Lymphoma", "Esophageal Carcinoma", "Glioblastoma Multiforme", "Head and Neck Squamous Cell Carcinoma", "Kidney Chromophobe", "Kidney Renal Clear Cell Carcinoma", "Kidney Renal Papillary Cell Carcinoma", "Acute Myeloid Leukemia", "Brain Lower Grade Glioma", "Liver Hepatocellular Carcinoma", "Lung Adenocarcinoma", "Lung Squamous Cell Carcinoma", "Mesothelioma", "Ovarian Serous Cystadenocarcinoma", "Pancreatic Adenocarcinoma", "Pheochromocytoma and Paraganglioma", "Prostate Adenocarcinoma", "Rectum Adenocarcinoma", "Sarcoma", "Skin Cutaneous Melanoma", "Stomach Adenocarcinoma", "Testicular Germ Cell Tumors", "Thyroid Carcinoma", "Thymoma", "Uterine Corpus Endometrial Carcinoma", "Uterine Carcinosarcoma", "Uveal Melanoma")
-            if (keyword==""){
-                document.getElementById("ulItems").innerHTML = "";
-            }
-            else {
-                var number = 0;
-                var str = "";
-                for (var i=0;i<myArray.length;i++){
-                    var index = myArray[i].indexOf(keyword);
-                    if (index!=-1){
-                        var strs = "<li id=\"li_"+number.toString()+"\">"+myArray[i]+"</li>";
-                        str += strs;
-                        number += 1;
-                    }
-                }
-                document.getElementById("ulItems").innerHTML = str;
-            }
-        }
-    </script>
 </head>
 <body>
   <div class="navbar navbar-default navbar-inverse navbar-static-top">
@@ -165,13 +74,13 @@
                     var index = myselect.selectedIndex;
                     var val = myselect.options[index].value;
                     if (val=="1"){
-                        document.getElementById('txtKeyword').setAttribute("value", "ENST00000417324.1");
+                        document.getElementById('txtKeyword').setAttribute("value", "for example:ENST00000417324.1");
                     }
                     if (val=="2"){
-                        document.getElementById('txtKeyword').setAttribute("value", "hahasnp");
+                        document.getElementById('txtKeyword').setAttribute("value", "for example:hahasnp");
                     }
                     if (val=="3"){
-                        document.getElementById('txtKeyword').setAttribute("value", "Neuroblastoma");
+                        document.getElementById('txtKeyword').setAttribute("value", "for example:Neuroblastoma");
                     }
                 }
                 </script>
@@ -181,7 +90,7 @@
                     var myselect = document.getElementById('mysel');
                     var index = myselect.selectedIndex;
                     var val = myselect.options[index].value;
-                    var conten = form1.content.value;
+                    var conten = form1.content.value.replace("for example:", "");
                     if(conten=="")
                     {
                         alert("Please input what you want to search")
@@ -210,7 +119,7 @@
             <form role="form" action="" method="post" name="form1">
               <div class="form-group">
                 <div class="input-group">
-                    <input id="txtKeyword" type="text" class="form-control" name="content" onkeyup="selectItem(this.value, event)" style="position:absolute; width:500px;" value="ENST00000417324.1" onFocus="if(value==defaultValue){value='';this.style.color='#000'}" onBlur="if(!value){value=defaultValue;this.style.color='#999'}" style="color:#999999">
+                    <input HaoyuSug='A8A4EBDCB13A40AAB7CFB2ED12F273CE' id="txtKeyword" class="form-control" name="content" style="position:absolute; width:500px;" value="for example:ENST00000417324.1" onFocus="if(value==defaultValue){value='';this.style.color='#000'}" onBlur="if(!value){value=defaultValue;this.style.color='#999'}">
                   <ul id="ulItems" style="list-style-type:none;display: none; border:1px solid #cecece; border-top:none; "></ul>
                   <span class="input-group-btn">
                     <button class="btn btn-success" type="submit" onclick="setaction()" style="position:absolute; left:500px; top:0px;">Search</a>
@@ -237,4 +146,5 @@
       </div>
     </div>
 </body>
+<script type="text/javascript" charset="utf-8" src="http://www.92find.com/inteltip.js"></script>
 </html>

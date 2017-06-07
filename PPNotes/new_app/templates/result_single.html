@@ -73,13 +73,13 @@
                             var index = myselect.selectedIndex;
                             var val = myselect.options[index].value;
                             if (val=="1"){
-                                document.getElementById('txtKeyword').setAttribute("value", "ENST00000417324.1");
+                                document.getElementById('txtKeyword').setAttribute("value", "for example:ENST00000417324.1");
                             }
                             if (val=="2"){
-                                document.getElementById('txtKeyword').setAttribute("value", "hahasnp");
+                                document.getElementById('txtKeyword').setAttribute("value", "for example:hahasnp");
                             }
                             if (val=="3"){
-                                document.getElementById('txtKeyword').setAttribute("value", "Neuroblastoma");
+                                document.getElementById('txtKeyword').setAttribute("value", "for example:Neuroblastoma");
                             }
                         }
                         </script>
@@ -89,7 +89,7 @@
                             var myselect = document.getElementById('mysel');
                             var index = myselect.selectedIndex;
                             var val = myselect.options[index].value;
-                            var conten = form1.content.value;
+                            var conten = form1.content.value.replace("for example:", "");
                             if(conten==""){
                                 alert("Please input what you want to search")
                             }
@@ -117,7 +117,7 @@
                     <form role="form" action="" method="post" name="form1">
                       <div class="form-group">
                         <div class="input-group">
-                            <input id="txtKeyword" type="text" class="form-control" name="content" onkeyup="selectItem(this.value, event)" style="position:absolute; width:500px;" value="ENST00000417324.1" onFocus="if(value==defaultValue){value='';this.style.color='#000'}" onBlur="if(!value){value=defaultValue;this.style.color='#999'}" style="color:#999999">
+                            <input HaoyuSug='A8A4EBDCB13A40AAB7CFB2ED12F273CE' id="txtKeyword" class="form-control" name="content" style="position:absolute; width:500px;" value="for example:ENST00000417324.1" onFocus="if(value==defaultValue){value='';this.style.color='#000'}" onBlur="if(!value){value=defaultValue;this.style.color='#999'}">
                           <span class="input-group-btn">
                             <button class="btn btn-success" type="submit" onclick="setaction()">Search</a>
                           </span>
@@ -196,4 +196,5 @@
     {% endfor %} -->
 </table>
 </body>
+<script type="text/javascript" charset="utf-8" src="http://www.92find.com/inteltip.js"></script>
 </html>
